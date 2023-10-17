@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>menu</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="idBasedOn" content="An article (https://alvarotrigo.com/blog/javascript-menus) on menus by https://lukeembrey.com">
+    <link rel="canonical" href="https://alvarotrigo.com/blog/javascript-menus/"/>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="menu.css"/>
+    <script src="menu.js"></script>
+  </head>
+<body>
+<div class="flexDiv">
+  <button class="sec_btn" onclick="openMulti();">View Routes</button>
+  <div class="selectWrapper">
+    <div class="multiSelect" id="menu-0">
+      <div class="bottomBorder">Agencies</div>
+      <div class="iconDiv" onclick="nextMenu(event);">C-Tran<i class="material-icons">arrow_right</i></div>
+      <div class="iconDiv" onclick="openMulti();">SMART<i class="material-icons">arrow_right</i></div>
+      <div class="iconDiv" onclick="openMulti();">TriMet<i class="material-icons">arrow_right</i></div>
+    </div>
+    <div class="multiSelect" id="menu-1">
+      <div class="bottomBorder iconDiv noSpace narrow placeholder"><i class="material-icons">search</i>Route List</div>
+      <div class="iconDiv justHover" onclick="nextMenu(event);">Route X<i class="material-icons">arrow_right</i></div>
+      <div class="iconDiv justHover" onclick="nextMenu(event);">Route Y<i class="material-icons">arrow_right</i></div>
+      <div class="iconDiv justHover" onclick="nextMenu(event);">Route Z<i class="material-icons">arrow_right</i></div>
+      <div class="topBorder iconDiv noSpace" onclick="prevMenu(event);"><i class="material-icons">arrow_back</i>Back</div>
+    </div>
+    <div class="multiSelect" id="menu-2">
+      <div class="bottomBorder titleDiv">Route Info</div>
+      <div onclick="openMulti();">Route X Blah</div>
+      <div nclick="openMulti();">Route Y Blah</div>
+      <div onclick="openMulti();">Route Z Blah</div>
+      <div class="topBorder iconDiv noSpace" onclick="prevMenu(event);"><i class="material-icons">arrow_back</i>Back</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
