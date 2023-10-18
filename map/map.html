@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- note: much of the code / style ideas taken from various examples of mapbox's gl js -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stop Segments</title>
+    <link rel="stylesheet" type="text/css" href="https://tiles.trimet.org/maplibre-gl.css" />
+    <script src="https://tiles.trimet.org/maplibre-gl.js"></script>
+    <script>var mapboxgl=maplibregl;</script>
+    <script src="https://joxit.dev/pelias-mapbox-gl-js/pelias-geocoder.js"></script>
+    <link   href='https://joxit.dev/pelias-mapbox-gl-js/pelias-geocoder.css' rel='stylesheet'  type='text/css'/>
+    <link rel="stylesheet" type="text/css" href="map.css"/>
+    <script src="map.js"></script>
+  </head>
+<body>
+  <h1 style="display:none;">TriMet Stop Segments</h1>
+  <nav id="menu"></nav>
+  <div id='map'></div>
+  <pre id="features"></pre>
+  <script>
+    makeMap();
+    /*
+      map.addSource("parcels", {
+        type: "vector",
+        tiles: [
+          "https://vectortileservices3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Santa_Monica_Mountains_Parcels_VTL/VectorTileServer/tile/{z}/{y}/{x}.pbf"
+        ]
+      });
+      map.addLayer({
+        id: "parcels-fill",
+        type: "fill",
+        source: "parcels",
+
+        "source-layer": "Santa_Monica_Mountains_Parcels",
+
+        paint: {
+          "fill-color": "hsl(200, 80%, 50%)",
+          "fill-opacity": 0.5,
+          "fill-outline-color": "white"
+        }
+      }, render_above_this_layer);
+*/
+      
+      /*
+      map.addSource('segments', {
+        type: 'geojson',
+        data: segmentsGeojson,
+        buffer: 0,
+        maxzoom: 20
+      });
+
+      map.addLayer({
+        'id': 'traffic_segments',
+        'type': 'line',
+        'source': 'segments',
+        'layout': {
+          'visibility': 'visible',
+          'line-join': 'round',
+          'line-cap': 'round'
+        },
+        'paint': {
+          'line-opacity': 0.4,
+          'line-color': '#1b8dff',
+          'line-width': 8
+        },
+        'filter': ['all', ['==', '$type', 'LineString'], ['==', 'layer', 'traffic']]
+      }, render_above_this_layer);
+
+      map.addLayer({
+        'id': 'stops',
+        'type': 'circle',
+        'source': 'segments',
+        'layout': {
+          'visibility': 'visible'
+        },
+        'paint': {
+          'circle-color': '#bfec46',
+          'circle-radius': { stops: [[8, 0.5], [11, 3], [16, 6]] }
+        },
+        'filter': ['==', '$type', 'Point']
+      }, render_above_this_layer);
+
+      map.addLayer({
+        'id': 'segments-highlighted',
+        'type': 'line',
+        'source': 'segments',
+        'paint': {
+          'line-opacity': 0.9,
+          'line-color': '#ec352a',
+          'line-width': 4
+        },
+        'filter': ['in', 'id', '']
+      });
+
+      map.addLayer({
+        'id': 'symbols-highlighted',
+        'type': 'symbol',
+        'source': 'segments',
+        'layout': {
+            'symbol-placement': 'line',
+            'text-font': ['Open Sans Regular'],
+            'text-field': ['get', 'code'],
+            'text-size': { stops: [[8, 2], [11, 12], [16, 18]] }
+        },
+        'filter': ['in', 'id', '']
+      });
+      */
+  </script>
+</body>
+</html>
