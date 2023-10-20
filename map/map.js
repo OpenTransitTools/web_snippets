@@ -56,6 +56,11 @@ function makeMap(segmentsGeojson='trimet.geojson') {
     trackUserLocation: true
   });
 
+  // needs to have a source with 'terrain' layer - https://demotiles.maplibre.org/terrain-tiles/tiles.json
+  var terrain = new maplibregl.TerrainControl({
+    source: "terrain"
+  });
+
   var iconMarkerEl = document.createElement("div");
   iconMarkerEl.innerHTML = "<div class='marker-arrow'></div>" + "<div class='marker-pulse'></div>";
 
@@ -90,6 +95,7 @@ function makeMap(segmentsGeojson='trimet.geojson') {
 
   map.addControl(nav);
   map.addControl(scale);
+  map.addControl(terrain);
   map.addControl(pelias);
   map.addControl(attrib);
   map.addControl(full, 'bottom-right');
