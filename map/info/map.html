@@ -10,6 +10,7 @@
     <script>var mapboxgl=maplibregl;</script>
     <script src="https://joxit.dev/pelias-mapbox-gl-js/pelias-geocoder.js"></script>
     <link  href='https://joxit.dev/pelias-mapbox-gl-js/pelias-geocoder.css' rel='stylesheet'  type='text/css'/>
+    <script src="https://unpkg.com/squirrelly@9.0.0/dist/browser/squirrelly.min.js"></script>
     <link  href="../base/base.css" rel="stylesheet" type="text/css"/>
     <script src="../base/base.js"></script>
     <link  href="info.css" rel="stylesheet" type="text/css"/>
@@ -21,7 +22,7 @@
   <script>
     var map = makeMap();
     map.on('load', function () {
-      selection(map, (f) => {return f['sourceLayer'] === "poi"});
+      selection(map);
     });
   </script>
 </body>

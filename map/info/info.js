@@ -1,56 +1,49 @@
 
-function pointToBBox(point, inc=10) {
+function screenPointToBBox(point, inc=10) {
   return [[point.x - inc, point.y - inc], [point.x + inc, point.y + inc]];
 }
 
 /** map mouse over selects features */
-function selection(map, filter) {
+function selection(map, layers=['poi_label_1', 'poi_label_2', 'poi_label_3']) {
   map.on('mousemove', (e) => {
-    var bbox = pointToBBox(e.point);
-    //console.log(bbox);  //console.log(e.point);
-    const features = map.queryRenderedFeatures(bbox);
-    var n = 0;
-    for(f in features) {
-        if(filter(features[f])) {
-          //console.log(features[f]);
-          info(features[f]);
-          highlight(map, features[f])
-          n++;
-        }
+    var bbox = screenPointToBBox(e.point);
+    const features = map.queryRenderedFeatures(bbox, {layers: layers});
+    //console.log(features);
+    if (features.length > 0) {
+      for(f in features) {
+        info(features[f]);
+        highlight(map, features[f])
+      }
     }
-
-    if(n == 0) {
+    else
       clear(map);
-    }
   });
 }
 
-function getContent(feature) {
-  function typeName(feature, sep=", ") {
-    var retVal = "";
-    try {
-      const t = feature.properties.class;
-      const s = feature.properties.subclass;
-      if(t && s) {
-        if (t !== s) retVal = t + sep + s;
-        else retVal = t;
-      }
-      else if (t || s) {
-        retVal = t | s;
-      }
-    } catch(e) {
+function typeName(name, sub, sep=", ", pre="(", post=")") {
+  var retVal = "";
+  try {
+    if(name && sub) {
+      if (name !== sub) retVal = name + sep + sub;
+      else retVal = name;
     }
-    return retVal;
+    else if (name || sub) {
+      retVal = name| sub;
+    }
+  } finally {
+    if(retVal) 
+      retVal = pre + retVal + post;
   }
-
-  const txt = feature.properties.name;
-  const type = typeName(feature);
-  if(type)
-    retVal = txt + " (" + type + ")";
-  else
-    retVal = txt;
-
   return retVal;
+}
+
+function getContent(feature) {
+  propz = feature.properties;
+  var template = "\
+    {{propz.name}} \
+    {{typeName(propz.class, propz.subclass)}} \
+  ";
+  return Sqrl.render(template);
 }
 
 function info(feature) {
