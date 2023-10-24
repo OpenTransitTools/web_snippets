@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>OTT Map</title>
+    <title>OTT Info Dialog</title>
     <link rel="stylesheet" type="text/css" href="https://tiles.trimet.org/maplibre-gl.css" />
     <script src="https://tiles.trimet.org/maplibre-gl.js"></script>
     <script>var mapboxgl=maplibregl;</script>
@@ -12,14 +12,16 @@
     <link  href='https://joxit.dev/pelias-mapbox-gl-js/pelias-geocoder.css' rel='stylesheet'  type='text/css'/>
     <link  href="../base/base.css" rel="stylesheet" type="text/css"/>
     <script src="../base/base.js"></script>
+    <link  href="info.css" rel="stylesheet" type="text/css"/>
+    <script src="info.js"></script>
   </head>
 <body>
-  <h1 style="display:none;">OTT Map</h1>
-  <nav id="menu"></nav>
+  <div id="info"></div>
   <div id='map'></div>
   <script>
     var map = makeMap();
     map.on('load', function () {
+      selection(map, (f) => {return f['sourceLayer'] === "poi"});
     });
   </script>
 </body>

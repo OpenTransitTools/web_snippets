@@ -1,0 +1,13 @@
+#info {
+    background: #fff;
+    position: absolute;
+    z-index: 1;
+    top: 70px;
+    left: 10px;
+    border-radius: 5px;
+    width: 400px;
+    height: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    font-family: 'Open Sans', sans-serif;
+  }
+  

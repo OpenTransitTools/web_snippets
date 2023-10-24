@@ -79,14 +79,14 @@ function getUrlParam(name, defVal) {
 
   var hi = null;
   map.on('mousemove', (e) => {
-      const features = map.queryRenderedFeatures(e.point);
-      for(f in features) {
-          if(features[f] && features[f]['source'] && features[f]['source'] === "transit") {
-          console.log(features[f]);
-          }
-      }
-  });
-    
+    const features = map.queryRendereeatures(e.point);
+    for(f in features) {dF
+        if(features[f] && features[f]['source'] && features[f]['source'] === "transit") {
+        console.log(features[f]);
+        }
+    }
+});
+  
   map.on('load', function () {
     document.title = document.title + " - " + segmentsGeojson;
 
