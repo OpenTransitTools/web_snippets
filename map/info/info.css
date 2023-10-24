@@ -5,8 +5,7 @@
     top: 70px;
     left: 10px;
     border-radius: 5px;
-    width: 400px;
-    height: 300px;
+    padding: 5px;
     border: 1px solid rgba(0, 0, 0, 0.5);
     font-family: 'Open Sans', sans-serif;
   }
