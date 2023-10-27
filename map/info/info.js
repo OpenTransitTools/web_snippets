@@ -6,7 +6,8 @@ function screenPointToBBox(point, inc=10) {
 /** map mouse over selects features */
 function selection(map, layers=['poi_label_1', 'poi_label_2', 'poi_label_3']) {
   map.on('mousemove', (e) => {
-    var bbox = screenPointToBBox(e.point);
+    const bbox = screenPointToBBox(e.point);
+    // https://maplibre.org/maplibre-gl-js/docs/API/classes/maplibregl.Map/#queryrenderedfeatures
     const features = map.queryRenderedFeatures(bbox, {layers: layers});
     //console.log(features);
     if (features.length > 0) {
