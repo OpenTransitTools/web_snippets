@@ -17,43 +17,32 @@ function addLayers(map, render_above_this_layer='road_major_label') {
     ]
   });
 
-  function getColor(rec) {
-    console.log(rec);
-    return '#555';
-  }
-  
-  map.addLayer({
-    'id': 'croutes',
-    'type': 'line',
-    'source': 'transit',
-    'source-layer': 'c-tran_routes',
-    'layout': {
-      'visibility': 'visible',
-      'line-join': 'round',
-      'line-cap': 'round'
-    },
-    'paint': {
-      'line-opacity': 0.9,
-      'line-color': ['get', 'route_color'],
-      'line-width': 4
-    }
-  }, render_above_this_layer);
-
-  map.addLayer({
-    'id': 'tmroutes',
-    'type': 'line',
-    'source': 'transit',
-    'source-layer': 'trimet_routes',
-    'layout': {
-      'visibility': 'visible',
-      'line-join': 'round',
-      'line-cap': 'round'
-    },
-    'paint': {
-      'line-opacity': 0.9,
-      'line-color': '#2b8dff',
-      'line-width': 4
-    }
-
-  }, render_above_this_layer);
+  const agencyList = ['trimet', 'cat', 'ccrider', 'canby', 'canbyferry', 'clackamas', 'ctran', 'rideconnection', 'sam', 'sctd', 'skamania', 'smart', 'swan', 'wapark', 'woodburn', 'yamhill', 'cherriots', 'tillamook', 'point'];
+  agencyList.forEach((a) => {
+    var route = a + '_routes';
+    map.addLayer({
+      'id': route,
+      'type': 'line',
+      'source': 'transit',
+      'source-layer': route,
+      'layout': {
+        'visibility': 'visible',
+        'line-join': 'round',
+        'line-cap': 'round'
+      },
+      'paint': {
+        'line-opacity': 1.0,
+        'line-color': [
+          'case', ['boolean', ['feature-state', 'hover'], false],
+          'yellow',
+          ['get', 'route_color']
+        ],
+        'line-width': [
+          'case', ['boolean', ['feature-state', 'hover'], false],
+          5,
+          2
+        ]
+      }
+    }, render_above_this_layer);
+  });
 }
