@@ -13,6 +13,7 @@
     <link  href="./base/base.css" rel="stylesheet" type="text/css"/>
     <script src="./base/base.js"></script>
     <script src="./layer/layer.js"></script>
+    <script src="./layer/select.js"></script>
   </head>
 <body>
   <div id='map'></div>
@@ -20,6 +21,7 @@
     var map = makeMap();
     map.on('load', function () {
       addLayers(map);
+      selection(map);
     });
   </script>
 </body>
