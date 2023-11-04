@@ -1,5 +1,20 @@
 var hoveredFeatures = null;
 
+function getContent() {
+  //console.log(hoveredFeatures);
+  var template = "\
+    num routes:{{hoveredFeatures.length}} <br/> <br/> \
+    {{@each(hoveredFeatures) => f}} \
+      {{f.properties.route_short_name | check}} {{f.properties.route_long_name}}<br/> \
+    {{/each}} \
+  ";
+
+  Sqrl.filters.define("check", function(str) {
+    return str ? str : "";
+  });
+  return Sqrl.render(template);
+}
+
 function setHoverState(map, value = false, layer = "transit") {
   hoveredFeatures.forEach((hf) => {
     try {
@@ -50,8 +65,10 @@ function selection(map, layers = routeLayerList) {
     const features = map.queryRenderedFeatures(bbox, { layers: layers });
     if (features.length > 0) {
       mouseMoveEvent(map, features);
+      showInfo(getContent());
     } else {
       mouseLeaveEvent(map);
+      clearInfo();
     } 
   });
 }

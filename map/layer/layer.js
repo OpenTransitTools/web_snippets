@@ -11,16 +11,10 @@ function addLayers(map, render_above_this_layer="road_major_label") {
   const svr = "http://localhost:8600";
   const layer = "routes_n_stops";
 
-  const epsg = "900913";
   //const epsg = "3857";
   //const vectorURL = svr + '/geoserver/gwc/rest/wtms/' + layer + '@EPSG%3A'+ epsg +'@pbf/{z}/{x}/{y}.pbf';
-  const vectorURL =
-    svr +
-    "/geoserver/gwc/service/tms/1.0.0/" +
-    layer +
-    "@EPSG%3A" +
-    epsg +
-    "@pbf/{z}/{x}/{y}.pbf";
+  const epsg = "900913";
+  const vectorURL =   svr + '/geoserver/gwc/service/tms/1.0.0/' + layer + "@EPSG%3A" + epsg + "@pbf/{z}/{x}/{y}.pbf";
 
   map.addSource("transit", {
     type: "vector",
